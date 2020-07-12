@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title th:text="${title != null ? title : 'Blog - CodeGym'}"></title>
+    <style>
+        html, body {
+			padding: 0;
+            margin:  0;
+            background: #f6f6f6;
+        }
+
+        .mt_10{
+	        margin-top: 10px !important;
+        }
+
+        a {
+	        color: #424242;
+	        text-decoration: none;
+        }
+
+        .regBox {
+            margin: 0 auto;
+	        max-width: 900px;
+        }
+
+        .phdr {
+	        color: #fff;
+	        background: #4c5b61;
+	        font-size: 1.1rem;
+	        padding: 12px;
+        }
+        .phdr a {
+	        color: #fff;
+        }
+
+	    .list {
+		    padding: 10px;
+		    background: #fff;
+
+	    }
+
+        .button {
+	        padding: 10px 20px;
+	        background: #fff;
+	        box-shadow: 0px 1px 5px -1px rgba(0, 0, 0, 0.1), 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+	        border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="regBox mt_10">
+    <center>
+        <h2>BLOG</h2>
+    </center>
+</div>
+<div class="regBox mt_10">
+	<center>
+		<a class="button" href="add" th:href="@{'add'}">Add</a>
+	</center>
+	<div class="mt_10"></div>
+	<th:block th:if="${list != null}">
+		<div class="mt_10" th:each="post:${list}">
+			<div class="phdr">
+				<a th:href="@{'post/' + ${post.getId()}}">
+					<th:block th:text="${post.getName()}"></th:block>
+				</a>
+			</div>
+			<div class="list" th:text="${post.getContent()}"></div>
+		</div>
+	</th:block>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::head">
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div class="regBox mt_10">
+	<center>
+		<a href="/" th:href="@{'/'}"><h2>BLOG</h2></a>
+	</center>
+</div>
+<center>
+	<h2>Edit Post</h2>
+	<div th:if="${success != null}">
+		<span th:text="${success}"></span>
+	</div>
+	<form method="post">
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" name="name" th:value="${post.getName()}" /></td>
+			</tr>
+			<tr>
+				<td>Content:</td>
+				<td><input type="text" name="content" th:value="${post.getContent()}" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Save" /></td>
+			</tr>
+		</table>
+	</form>
+	<br />
+	<br />
+	<a th:href="@{'/post/' + ${post.getId()}}">Back</a>
+</center>
+</body>
+</html>

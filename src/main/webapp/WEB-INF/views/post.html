@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::head">
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div class="regBox mt_10">
+	<center>
+		<a href="/" th:href="@{'/'}"><h2>BLOG</h2></a>
+	</center>
+</div>
+<div class="regBox mt_10">
+	<div class="phdr" th:text="${post.getName()}"></div>
+	<div class="list" th:text="${post.getContent()}"></div>
+	<div class="mt_10">
+		<a th:href="@{'/edit/' + ${post.getId()}}">Edit</a> -
+		<a th:href="@{'/delete/' + ${post.getId()}}">Delete</a>
+	</div>
+</div>
+</body>
+</html>
